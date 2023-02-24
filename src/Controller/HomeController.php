@@ -1,5 +1,5 @@
 <?php
-// src/Controller/LuckyController.php
+// src/Controller/HomeController.php
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -10,18 +10,32 @@ class HomeController extends AbstractController
 {
 
     /**
-    * @Route("/home")
+    * @Route("/", name="Accueil")
     */
 
     public function Hello(): Response
     {
 
         // this looks exactly the same
-        $text = "Bonjour tous le monde";
-
-        return $this->render('home.html.twig', [
-            'text' => $text,
+        
+        return $this->render('/page/home.html.twig', [
+        
         ]);
     }
 
+
+    /**
+    * @Route("/a-propos", name="A-propos")
+    */
+
+    public function About(): Response
+    {
+
+        // this looks exactly the same
+        
+        return $this->render('/page/about.html.twig', [
+            
+        ]);
+
+    }
 }
