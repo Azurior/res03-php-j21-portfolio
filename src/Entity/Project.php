@@ -25,6 +25,10 @@ class Project
     #[ORM\Column(length: 1023)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'projects')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ProjectImage $images = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +78,18 @@ class Project
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImages(): ?ProjectImage
+    {
+        return $this->images;
+    }
+
+    public function setImages(?ProjectImage $images): self
+    {
+        $this->images = $images;
 
         return $this;
     }
