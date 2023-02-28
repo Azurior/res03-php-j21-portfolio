@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends AbstractController
 {
-    #[Route('/login', name: 'app_login')]
+    #[Route('/login', name: 'Connexion')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
 
@@ -22,7 +22,7 @@ class LoginController extends AbstractController
 
         return $this->render('login/index.html.twig', [
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error'         => $error
         ]);
     }
 }

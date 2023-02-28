@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/project')]
 class ProjectController extends AbstractController
 {
-    #[Route('/', name: 'app_project_index', methods: ['GET'])]
+    #[Route('/', name: 'Admin-Project', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
     {
-        return $this->render('project/index.html.twig', [
+        return $this->render('admin/index.html.twig', [
             'projects' => $projectRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'app_project_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'Admin-Project-New', methods: ['GET', 'POST'])]
     public function new(Request $request, ProjectRepository $projectRepository): Response
     {
         $project = new Project();
@@ -34,21 +34,21 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute('app_project_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('project/new.html.twig', [
+        return $this->renderForm('admin/new.html.twig', [
             'project' => $project,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_project_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'Admin-Project-Show', methods: ['GET'])]
     public function show(Project $project): Response
     {
-        return $this->render('project/show.html.twig', [
+        return $this->render('admin/show.html.twig', [
             'project' => $project,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_project_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'Admin-Project-Edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Project $project, ProjectRepository $projectRepository): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
@@ -60,13 +60,13 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute('app_project_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('project/edit.html.twig', [
+        return $this->renderForm('admin/edit.html.twig', [
             'project' => $project,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_project_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'Admin-Project-Delete', methods: ['POST'])]
     public function delete(Request $request, Project $project, ProjectRepository $projectRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {

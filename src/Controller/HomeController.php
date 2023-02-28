@@ -13,7 +13,7 @@ class HomeController extends AbstractController
     * @Route("/", name="Accueil")
     */
 
-    public function Hello(): Response
+    public function Accueil(): Response
     {
 
         // this looks exactly the same
@@ -35,6 +35,21 @@ class HomeController extends AbstractController
         // this looks exactly the same
         
         return $this->render('/page/about.html.twig', [
+            
+        ]);
+
+    }
+
+    /**
+    * @Route("/mes-projets", name="Mes-Projets")
+    */
+
+    public function Project(): Response
+    {
+
+        // this looks exactly the same
+        
+        return $this->render('/page/projects.html.twig', [
             
         ]);
 

@@ -25,8 +25,8 @@
                 <td>{{ project.secondTechno }}</td>
                 <td>{{ project.description }}</td>
                 <td>
-                    <a href="{{ path('app_project_show', {'id': project.id}) }}">show</a>
-                    <a href="{{ path('app_project_edit', {'id': project.id}) }}">edit</a>
+                    <a href="{{ path('Admin-Project-Show', {'id': project.id}) }}">show</a>
+                    <a href="{{ path('Admin-Project-Edit', {'id': project.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_project_new') }}">Create new</a>
+    <a href="{{ path('Admin-Project-New') }}">Create new</a>
 {% endblock %}
